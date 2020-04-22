@@ -1,6 +1,6 @@
 import React from 'react';
 import AddItem from './AddItem';
-import Item from './Item'
+import Item from './Item';
 
 
 
@@ -15,11 +15,19 @@ class ItemsContainer extends React.Component{
 
     };
 
-    getGear(){
+    getGear = () => {
         fetch(`http://localhost:5000/api/gear`)
             .then(response =>response.json())
             .then(data => this.setState({items:data}, () => console.log(this.state.items)))
     };
+
+    removeGear = (id) => {
+        fetch(`http://localhost:5000/api/gear/${id}`, {
+            method: "DELETE"
+        })
+            .then(response => response.json())
+            .then(this.getGear)
+    }
 
     componentDidMount(){
         this.getGear();
@@ -27,16 +35,14 @@ class ItemsContainer extends React.Component{
 
     render(){
 
-        const item = this.state.items.map(item =>
-            <li key={item._id}><Item item={item} getGear={this.getGear}/></li>
-            );
+        const displayItems = this.state.items.map((item) => {
+            return <Item key={item._id} item={item} removeGear={this.removeGear}/>
+        });
 
         return(
             <>
                 <AddItem getGear={this.getGear} />
-                <ul>
-                    {item}
-                </ul>
+                {displayItems}
             </>
         );
     };
