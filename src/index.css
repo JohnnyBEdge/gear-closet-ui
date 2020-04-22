@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.acc-btn {
+  background-color: #eee;
+  color: black;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  text-align: center;
+  transition: 0.4s;
+}
+
+.active, .acc-btn {
+  background-color: #ccc;
+}
+
+.accordion {
+  padding: 0 18px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
