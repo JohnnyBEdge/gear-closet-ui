@@ -1,10 +1,8 @@
 import React from 'react';
 
 class AddItem extends React.Component{
-    constructor(props){
-        super(props);
 
-        this.state = {
+        state = {
             name: '',
             brand: '',
             desc: '',
@@ -15,41 +13,45 @@ class AddItem extends React.Component{
             notes: ''
         }
 
-    this.handleName = this.handleName.bind(this);
-    this.handleBrand = this.handleBrand.bind(this);
-    this.handleDesc = this.handleDesc.bind(this);
-    this.handlePurchaseDate = this.handlePurchaseDate.bind(this);
-    this.handlePrice = this.handlePrice.bind(this);
-    this.handleUseCategory = this.handleUseCategory.bind(this);
-    this.handleUseSeasons = this.handleUseSeasons.bind(this);
-    this.handleNotes = this.handleNotes.bind(this);
+    // this.handleName = this.handleName.bind(this);
+    // this.handleBrand = this.handleBrand.bind(this);
+    // this.handleDesc = this.handleDesc.bind(this);
+    // this.handlePurchaseDate = this.handlePurchaseDate.bind(this);
+    // this.handlePrice = this.handlePrice.bind(this);
+    // this.handleUseCategory = this.handleUseCategory.bind(this);
+    // this.handleUseSeasons = this.handleUseSeasons.bind(this);
+    // this.handleNotes = this.handleNotes.bind(this);
 
+    
+    handleChange = ({target}) => {
+        const key = target.name;
+        this.setState({[key]: target.value});
     };
 
-    handleName = (e) => {
-        this.setState({name: e.target.value});
-    };
-    handleBrand = (e) => {
-        this.setState({brand: e.target.value});
-    };
-    handleDesc = (e) => {
-        this.setState({desc: e.target.value});
-    };
-    handlePurchaseDate = (e) => {
-        this.setState({purchase_date: e.target.value});
-    };
-    handlePrice = (e) => {
-        this.setState({price: e.target.value});
-    };
-    handleUseCategory = (e) => {
-        this.setState({use_category: e.target.value});
-    };
-    handleUseSeasons = (e) => {
-        this.setState({use_seasons: e.target.value});
-    };
-    handleNotes = (e) => {
-        this.setState({notes: e.target.value});
-    };
+    // handleName = (e) => {
+    //     this.setState({name: e.target.value});
+    // };
+    // handleBrand = (e) => {
+    //     this.setState({brand: e.target.value});
+    // };
+    // handleDesc = (e) => {
+    //     this.setState({desc: e.target.value});
+    // };
+    // handlePurchaseDate = (e) => {
+    //     this.setState({purchase_date: e.target.value});
+    // };
+    // handlePrice = (e) => {
+    //     this.setState({price: e.target.value});
+    // };
+    // handleUseCategory = (e) => {
+    //     this.setState({use_category: e.target.value});
+    // };
+    // handleUseSeasons = (e) => {
+    //     this.setState({use_seasons: e.target.value});
+    // };
+    // handleNotes = (e) => {
+    //     this.setState({notes: e.target.value});
+    // };
 
 
     handleSubmit = (e) => {
@@ -61,71 +63,89 @@ class AddItem extends React.Component{
                 'Content-Type':'application/json'
             },
             body: JSON.stringify([this.state])
-        }).then(this.props.getGear);
-
+        })
+            .then(this.props.getGear)
+            .then(() => this.setState({
+                name: '',
+                brand: '',
+                desc: '',
+                purchase_date: '',
+                price: 0,
+                use_category: [],
+                use_seasons: [],
+                notes: ''
+            }));
         }
 
     render(){
 
         return (
 
-            <form id="item_form">
+            <form id="item_form" onSubmit={this.handleSubmit}>
                 <h2>Add Item to the Closet</h2>
 
-                <label>Name:</label>
                     <input 
+                        name="name" 
+                        placeholder="name" 
                         type='text' 
                         value={this.state.value} 
-                        onChange={this.handleName}/>
+                        onChange={this.handleChange} />
 
-                <label>Brand:</label>
                     <input 
+                        name="brand"
+                        placeholder="brand"
                         type='text' 
                         value={this.state.value} 
-                        onChange={this.handleBrand}/>
+                        onChange={this.handleChange}/>
                 
-                <label>Description:</label>
                     <textarea 
+                        name="desc"
+                        placeholder="Description"
                         type='text' 
                         value={this.state.value} 
-                        onChange={this.handleDesc}></textarea>
+                        onChange={this.handleChange}></textarea>
                 
-                <label>Purchase Date:</label>
                     <input 
+                        name="purchase_date"
+                        placeholder="Purchase date (ex: Jan 2020)"
                         type='text' 
                         value={this.state.value} 
-                        onChange={this.handlePurchaseDate}/>
+                        onChange={this.handleChange}/>
 
-                <label>Price:</label>
                     <input 
+                        name="price"
+                        placeholder="price"
                         type='number' 
                         value={this.state.value} 
-                        onChange={this.handlePrice}/>
+                        onChange={this.handleChange}/>
 
-                <label>Use categories:</label>
                     <input 
+                        name="use_category"
+                        placeholder="Use Categories"
                         type='text' 
                         value={this.state.value} 
-                        onChange={this.handleUseCategory}/>
+                        onChange={this.handleChange}/>
 
-                <label>Use Seasons:</label>
                     <input 
+                        name="use_seasons"
+                        placeholder="Use Seasons"
                         type='text' 
                         value={this.state.value} 
-                        onChange={this.handleUseSeasons}/>
+                        onChange={this.handleChange}/>
 
-                <label>Notes:</label>
                     <textarea 
+                        name="notes"
+                        placeholder="notes"
                         type='text' 
                         value={this.state.value} 
-                        onChange={this.handleNotes}></textarea>
+                        onChange={this.handleChange}></textarea>
 
 
-                <button id="submit_btn" type='submit' onClick={this.handleSubmit}>Submit</button>
+                <button id="submit_btn" type='submit'>Submit</button>
             </form>
 
         );
     };
-};
+}
 
 export default AddItem;
