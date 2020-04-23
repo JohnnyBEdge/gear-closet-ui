@@ -1,7 +1,7 @@
 import React from 'react';
-import AddItem from './AddItem';
+import AddItemForm from './AddItemForm';
 import Item from './Item';
-import EditItem from './EditItem';
+import EditItemForm from './EditItemForm';
 
 
 
@@ -11,7 +11,8 @@ class ItemsContainer extends React.Component{
 
         this.state = {
             items: [],
-            modalIsOpen: false
+            modalIsOpen: false,
+            updateGear: {}
         }
         this.getGear = this.getGear.bind(this);
 
@@ -30,9 +31,13 @@ class ItemsContainer extends React.Component{
             .then(response => response.json())
             .then(this.getGear)
     }
-    openModal = () => {
-        this.setState({modalIsOpen: true})
+    updateGear = (item) => {
+        this.setState({
+            updateGear:item,
+            modalIsOpen: true
+        })
     };
+
     closeModal = () => {
         this.setState({modalIsOpen: false})
     };
@@ -44,14 +49,26 @@ class ItemsContainer extends React.Component{
     render(){
 
         const displayItems = this.state.items.map((item) => {
-            return <Item key={item._id} item={item} removeGear={this.removeGear} openModal={this.openModal}/>
+            return <Item key={item._id} 
+                        item={item} 
+                        removeGear={this.removeGear} 
+                        updateGear={this.updateGear}/>
         });
+
+        let editForm;
+        if(this.state.modalIsOpen){
+            editForm =  <EditItemForm key={this.state.updateGear._id} 
+                                modalIsOpen={this.state.modalIsOpen} 
+                                closeModal={this.closeModal} 
+                                item={this.state.updateGear}/>
+        }
+
 
         return(
             <>
-                <AddItem getGear={this.getGear} />
+                <AddItemForm getGear={this.getGear} />
                 {displayItems}
-                <EditItem modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal}/>
+                {editForm}
             </>
         );
     };

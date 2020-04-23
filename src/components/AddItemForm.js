@@ -1,6 +1,6 @@
 import React from 'react';
 
-class AddItem extends React.Component{
+class AddItemForm extends React.Component{
 
         state = {
             name: '',
@@ -20,8 +20,8 @@ class AddItem extends React.Component{
 
     handleCheck = (e) => {
         const seasons = this.state.use_seasons;
-        if(e.target.checked){
-            seasons.push(e.target.value)
+         if(e.target.checked){
+            seasons.push(e.target.value);
         };
         this.setState({use_seasons: seasons})
     }
@@ -37,17 +37,18 @@ class AddItem extends React.Component{
             },
             body: JSON.stringify([this.state])
         })
+        .then(() => this.setState({
+            name: '',
+            brand: '',
+            desc: '',
+            purchase_date: '',
+            price: 0,
+            use_category: [],
+            use_seasons: [],
+            notes: ''
+        }))
             .then(this.props.getGear)
-            .then(() => this.setState({
-                name: '',
-                brand: '',
-                desc: '',
-                purchase_date: '',
-                price: 0,
-                use_category: [],
-                use_seasons: [],
-                notes: ''
-            }));
+            
         }
 
     render(){
@@ -60,42 +61,42 @@ class AddItem extends React.Component{
                     name="name" 
                     placeholder="name" 
                     type='text' 
-                    value={this.state.value} 
+                    value={this.state.name} 
                     onChange={this.handleChange} />
 
                 <input 
                     name="brand"
                     placeholder="brand"
                     type='text' 
-                    value={this.state.value} 
+                    value={this.state.brand} 
                     onChange={this.handleChange}/>
             
                 <textarea 
                     name="desc"
                     placeholder="Description"
                     type='text' 
-                    value={this.state.value} 
+                    value={this.state.desc} 
                     onChange={this.handleChange}></textarea>
             
                 <input 
                     name="purchase_date"
                     placeholder="Purchase date (ex: Jan 2020)"
                     type='text' 
-                    value={this.state.value} 
+                    value={this.state.purchase_date} 
                     onChange={this.handleChange}/>
 
                 <input 
                     name="price"
                     placeholder="price"
                     type='number' 
-                    value={this.state.value} 
+                    value={this.state.price} 
                     onChange={this.handleChange}/>
 
                 <input 
                     name="use_category"
                     placeholder="Use Categories"
                     type='text' 
-                    value={this.state.value} 
+                    value={this.state.use_category} 
                     onChange={this.handleChange}/>
 
                 <p>Which seasons do you use this item?</p>
@@ -123,7 +124,7 @@ class AddItem extends React.Component{
                     name="notes"
                     placeholder="notes"
                     type='text' 
-                    value={this.state.value} 
+                    value={this.state.notes} 
                     onChange={this.handleChange}></textarea>
 
 
@@ -133,4 +134,4 @@ class AddItem extends React.Component{
     };
 }
 
-export default AddItem;
+export default AddItemForm;
