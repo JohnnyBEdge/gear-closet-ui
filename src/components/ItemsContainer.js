@@ -1,6 +1,7 @@
 import React from 'react';
 import AddItem from './AddItem';
 import Item from './Item';
+import EditItem from './EditItem';
 
 
 
@@ -9,7 +10,8 @@ class ItemsContainer extends React.Component{
         super(props);
 
         this.state = {
-            items: []
+            items: [],
+            modalIsOpen: false
         }
         this.getGear = this.getGear.bind(this);
 
@@ -28,6 +30,12 @@ class ItemsContainer extends React.Component{
             .then(response => response.json())
             .then(this.getGear)
     }
+    openModal = () => {
+        this.setState({modalIsOpen: true})
+    };
+    closeModal = () => {
+        this.setState({modalIsOpen: false})
+    };
 
     componentDidMount(){
         this.getGear();
@@ -36,13 +44,14 @@ class ItemsContainer extends React.Component{
     render(){
 
         const displayItems = this.state.items.map((item) => {
-            return <Item key={item._id} item={item} removeGear={this.removeGear}/>
+            return <Item key={item._id} item={item} removeGear={this.removeGear} openModal={this.openModal}/>
         });
 
         return(
             <>
                 <AddItem getGear={this.getGear} />
                 {displayItems}
+                <EditItem modalIsOpen={this.state.modalIsOpen} closeModal={this.closeModal}/>
             </>
         );
     };

@@ -12,46 +12,11 @@ class AddItem extends React.Component{
             use_seasons: [],
             notes: ''
         }
-
-    // this.handleName = this.handleName.bind(this);
-    // this.handleBrand = this.handleBrand.bind(this);
-    // this.handleDesc = this.handleDesc.bind(this);
-    // this.handlePurchaseDate = this.handlePurchaseDate.bind(this);
-    // this.handlePrice = this.handlePrice.bind(this);
-    // this.handleUseCategory = this.handleUseCategory.bind(this);
-    // this.handleUseSeasons = this.handleUseSeasons.bind(this);
-    // this.handleNotes = this.handleNotes.bind(this);
-
     
     handleChange = ({target}) => {
         const key = target.name;
         this.setState({[key]: target.value});
     };
-
-    // handleName = (e) => {
-    //     this.setState({name: e.target.value});
-    // };
-    // handleBrand = (e) => {
-    //     this.setState({brand: e.target.value});
-    // };
-    // handleDesc = (e) => {
-    //     this.setState({desc: e.target.value});
-    // };
-    // handlePurchaseDate = (e) => {
-    //     this.setState({purchase_date: e.target.value});
-    // };
-    // handlePrice = (e) => {
-    //     this.setState({price: e.target.value});
-    // };
-    // handleUseCategory = (e) => {
-    //     this.setState({use_category: e.target.value});
-    // };
-    // handleUseSeasons = (e) => {
-    //     this.setState({use_seasons: e.target.value});
-    // };
-    // handleNotes = (e) => {
-    //     this.setState({notes: e.target.value});
-    // };
 
 
     handleSubmit = (e) => {
@@ -80,70 +45,68 @@ class AddItem extends React.Component{
     render(){
 
         return (
-
             <form id="item_form" onSubmit={this.handleSubmit}>
-                <h2>Add Item to the Closet</h2>
+            <h2>Add Item to the Closet</h2>
 
-                    <input 
-                        name="name" 
-                        placeholder="name" 
-                        type='text' 
-                        value={this.state.value} 
-                        onChange={this.handleChange} />
+                <input 
+                    name="name" 
+                    placeholder="name" 
+                    type='text' 
+                    value={this.state.value} 
+                    onChange={this.handleChange} />
 
-                    <input 
-                        name="brand"
-                        placeholder="brand"
-                        type='text' 
-                        value={this.state.value} 
-                        onChange={this.handleChange}/>
-                
-                    <textarea 
-                        name="desc"
-                        placeholder="Description"
-                        type='text' 
-                        value={this.state.value} 
-                        onChange={this.handleChange}></textarea>
-                
-                    <input 
-                        name="purchase_date"
-                        placeholder="Purchase date (ex: Jan 2020)"
-                        type='text' 
-                        value={this.state.value} 
-                        onChange={this.handleChange}/>
+                <input 
+                    name="brand"
+                    placeholder="brand"
+                    type='text' 
+                    value={this.state.value} 
+                    onChange={this.handleChange}/>
+            
+                <textarea 
+                    name="desc"
+                    placeholder="Description"
+                    type='text' 
+                    value={this.state.value} 
+                    onChange={this.handleChange}></textarea>
+            
+                <input 
+                    name="purchase_date"
+                    placeholder="Purchase date (ex: Jan 2020)"
+                    type='text' 
+                    value={this.state.value} 
+                    onChange={this.handleChange}/>
 
-                    <input 
-                        name="price"
-                        placeholder="price"
-                        type='number' 
-                        value={this.state.value} 
-                        onChange={this.handleChange}/>
+                <input 
+                    name="price"
+                    placeholder="price"
+                    type='number' 
+                    value={this.state.value} 
+                    onChange={this.handleChange}/>
 
-                    <input 
-                        name="use_category"
-                        placeholder="Use Categories"
-                        type='text' 
-                        value={this.state.value} 
-                        onChange={this.handleChange}/>
+                <input 
+                    name="use_category"
+                    placeholder="Use Categories"
+                    type='text' 
+                    value={this.state.value} 
+                    onChange={this.handleChange}/>
 
-                    <input 
-                        name="use_seasons"
-                        placeholder="Use Seasons"
-                        type='text' 
-                        value={this.state.value} 
-                        onChange={this.handleChange}/>
+                <input 
+                    name="use_seasons"
+                    placeholder="Use Seasons"
+                    type='text' 
+                    value={this.state.value} 
+                    onChange={this.handleChange}/>
 
-                    <textarea 
-                        name="notes"
-                        placeholder="notes"
-                        type='text' 
-                        value={this.state.value} 
-                        onChange={this.handleChange}></textarea>
+                <textarea 
+                    name="notes"
+                    placeholder="notes"
+                    type='text' 
+                    value={this.state.value} 
+                    onChange={this.handleChange}></textarea>
 
 
-                <button id="submit_btn" type='submit'>Submit</button>
-            </form>
-
+            <button id="submit_btn" type='submit'>Submit</button>
+        </form>
         );
     };
 }

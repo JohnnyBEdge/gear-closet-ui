@@ -1,0 +1,25 @@
+#edit_form {
+    height: 635px;
+
+}
+
+.ReactModal__Overlay.ReactModal__Overlay--after-open{
+    background-color: rgba(0, 0, 0, 0.75) !important;
+} 
+.ReactModal__Content.ReactModal__Content--after-open {
+    width: 500px;
+    height: 650px;
+    margin: 0 auto;
+}
+
+/* #edit_form input, textarea{
+    width: 400px;
+    text-align: center;
+    height: 30px;
+    margin: 10px;
+    border-radius: 10px;
+}
+
+#edit_form textarea {
+    height: 60px;
+} */
