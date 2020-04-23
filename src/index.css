@@ -39,3 +39,10 @@ form button {
   border-radius: 10px;
   margin: 5px;
 }
+
+.check-container input {
+  width: auto;
+  margin: 5px;
+  padding: 3px;
+  height: auto;
+}

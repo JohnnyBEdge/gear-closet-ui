@@ -2,6 +2,8 @@ import React from 'react';
 import Modal from 'react-modal'
 import '../comp-styling/EditItem.css';
 
+Modal.setAppElement('#root');
+
 class EditItem extends React.Component{
     constructor(props){
         super(props);
@@ -18,19 +20,6 @@ class EditItem extends React.Component{
 
     }
 
-        
-    
-    // handleChange = ({target}) => {
-    //     const key = target.name;
-    //     this.setState({[key]: target.value});
-    // };
-
-
-    handleSubmit = (e) => {
-        e.preventDefault();
-    };
-
-       
     render(){
 
         return (

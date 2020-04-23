@@ -18,6 +18,14 @@ class AddItem extends React.Component{
         this.setState({[key]: target.value});
     };
 
+    handleCheck = (e) => {
+        const seasons = this.state.use_seasons;
+        if(e.target.checked){
+            seasons.push(e.target.value)
+        };
+        this.setState({use_seasons: seasons})
+    }
+
 
     handleSubmit = (e) => {
         e.preventDefault();
@@ -90,12 +98,26 @@ class AddItem extends React.Component{
                     value={this.state.value} 
                     onChange={this.handleChange}/>
 
-                <input 
+                <p>Which seasons do you use this item?</p>
+
+                <div className="check-container">
+                    <input type="checkbox" name="use_seasons" value="Spring" onClick={this.handleCheck}/>
+                    <label>Spring</label>
+                    <input type="checkbox" name="use_seasons" value="Summer" onClick={this.handleCheck}/>
+                    <label>Summer</label>
+                    <input type="checkbox" name="use_seasons" value="Fall" onClick={this.handleCheck}/>
+                    <label>Fall</label>
+                    <input type="checkbox" name="use_seasons" value="Winter" onClick={this.handleCheck}/>
+                    <label>Winter</label>
+                </div>
+                
+
+                {/* <input 
                     name="use_seasons"
                     placeholder="Use Seasons"
                     type='text' 
                     value={this.state.value} 
-                    onChange={this.handleChange}/>
+                    onChange={this.handleChange}/> */}
 
                 <textarea 
                     name="notes"
