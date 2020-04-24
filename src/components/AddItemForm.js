@@ -34,7 +34,7 @@ class AddItemForm extends React.Component{
     handleSubmit = (e) => {
         e.preventDefault();
 
-        fetch(`http://localhost:5000/api/gear`,{
+        fetch(`${process.env.REACT_APP_API_URL}/api/gear`,{
             method: "POST",
             headers: {
                 'Content-Type':'application/json'
@@ -68,7 +68,7 @@ class AddItemForm extends React.Component{
 
         return (
             <form id="item_form" onSubmit={this.handleSubmit}>
-                {/* <Collapsible trigger="start here" onOpen={this.props.isClosed}> */}
+
                 <h2><span> <img id="open_close" src={PlusSign} onClick={() => this.toggleCollapse()} /> </span>Add Item to the Closet</h2>
                 <div id={this.state.openClose}>
                 <input 
@@ -113,9 +113,9 @@ class AddItemForm extends React.Component{
                     value={this.state.use_category} 
                     onChange={this.handleChange}/>
 
-                <p>Which seasons do you use this item?</p>
 
                 <div className="check-container">
+                <p>Which seasons do you use this item?</p>
                     <input type="checkbox" name="use_seasons" value="Spring" onClick={this.handleCheck}/>
                     <label>Spring</label>
                     <input type="checkbox" name="use_seasons" value="Summer" onClick={this.handleCheck}/>

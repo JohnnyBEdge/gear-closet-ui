@@ -26,7 +26,7 @@ class EditItemForm extends React.Component{
     }
     handleSubmit = (event) => {
         event.preventDefault(); 
-        fetch(`http://localhost:5000/api/gear/${this.props.item._id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/gear/${this.props.item._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

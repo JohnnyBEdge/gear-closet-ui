@@ -19,13 +19,13 @@ class ItemsContainer extends React.Component{
     };
 
     getGear = () => {
-        fetch(`http://localhost:5000/api/gear`)
+        fetch(`${process.env.REACT_APP_API_URL}/api/gear`)
             .then(response =>response.json())
             .then(data => this.setState({items:data}, () => console.log(this.state.items)))
     };
 
     removeGear = (id) => {
-        fetch(`http://localhost:5000/api/gear/${id}`, {
+        fetch(`${process.env.REACT_APP_API_URL}/api/gear/${id}`, {
             method: "DELETE"
         })
             .then(response => response.json())

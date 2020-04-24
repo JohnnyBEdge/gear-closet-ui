@@ -41,6 +41,10 @@ form button {
   margin: 5px;
 }
 
+.check_container {
+  width: 80%;
+  margin: 0 auto;
+}
 .check-container input {
   width: auto;
   margin: 5px;
