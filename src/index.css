@@ -46,3 +46,14 @@ form button {
   padding: 3px;
   height: auto;
 }
+
+#input_container_closed {
+  display: none;
+}
+#input_container_open {
+  display: block;
+}
+
+#open_close {
+  width: 30px;
+}

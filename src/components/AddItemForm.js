@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PlusSign from "./imgs/plus.png"
 class AddItemForm extends React.Component{
 
         state = {
@@ -10,7 +10,8 @@ class AddItemForm extends React.Component{
             price: 0,
             use_category: [],
             use_seasons: [],
-            notes: ''
+            notes: '',
+            openClose: 'input_container_closed'
         }
     
     handleChange = ({target}) => {
@@ -51,12 +52,21 @@ class AddItemForm extends React.Component{
             
         }
 
+    toggleCollapse = () => {
+        
+        if(this.state.openClose === "input_container_closed"){
+            this.setState({openClose: "input_container_open"})
+        } else {
+            this.setState({openClose: "input_container_closed"})
+        }
+    }
+    
     render(){
 
         return (
             <form id="item_form" onSubmit={this.handleSubmit}>
-            <h2>Add Item to the Closet</h2>
-
+            <h2><span> <img id="open_close" src={PlusSign} onClick={() => this.toggleCollapse()} /> </span>Add Item to the Closet</h2>
+            <div id={this.state.openClose}>
                 <input 
                     name="name" 
                     placeholder="name" 
@@ -128,7 +138,8 @@ class AddItemForm extends React.Component{
                     onChange={this.handleChange}></textarea>
 
 
-            <button id="submit_btn" type='submit'>Submit</button>
+                <button id="submit_btn" type='submit'>Submit</button>
+            </div>
         </form>
         );
     };
