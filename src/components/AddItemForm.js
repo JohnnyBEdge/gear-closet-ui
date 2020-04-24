@@ -1,5 +1,7 @@
 import React from 'react';
 import PlusSign from "./imgs/plus.png"
+import Collapsible from 'react-collapsible';
+
 class AddItemForm extends React.Component{
 
         state = {
@@ -11,7 +13,8 @@ class AddItemForm extends React.Component{
             use_category: [],
             use_seasons: [],
             notes: '',
-            openClose: 'input_container_closed'
+            isClosed: false
+            // openClose: 'input_container_closed'
         }
     
     handleChange = ({target}) => {
@@ -65,8 +68,9 @@ class AddItemForm extends React.Component{
 
         return (
             <form id="item_form" onSubmit={this.handleSubmit}>
-            <h2><span> <img id="open_close" src={PlusSign} onClick={() => this.toggleCollapse()} /> </span>Add Item to the Closet</h2>
-            <div id={this.state.openClose}>
+                {/* <Collapsible trigger="start here" onOpen={this.props.isClosed}> */}
+                <h2><span> <img id="open_close" src={PlusSign} onClick={() => this.toggleCollapse()} /> </span>Add Item to the Closet</h2>
+                <div id={this.state.openClose}>
                 <input 
                     name="name" 
                     placeholder="name" 
@@ -121,14 +125,6 @@ class AddItemForm extends React.Component{
                     <input type="checkbox" name="use_seasons" value="Winter" onClick={this.handleCheck}/>
                     <label>Winter</label>
                 </div>
-                
-
-                {/* <input 
-                    name="use_seasons"
-                    placeholder="Use Seasons"
-                    type='text' 
-                    value={this.state.value} 
-                    onChange={this.handleChange}/> */}
 
                 <textarea 
                     name="notes"
@@ -140,6 +136,7 @@ class AddItemForm extends React.Component{
 
                 <button id="submit_btn" type='submit'>Submit</button>
             </div>
+            {/* </Collapsible> */}
         </form>
         );
     };

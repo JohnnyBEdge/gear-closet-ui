@@ -36,6 +36,7 @@ class ItemsContainer extends React.Component{
             updateGear:item,
             modalIsOpen: true
         })
+       
     };
 
     closeModal = () => {
@@ -60,15 +61,20 @@ class ItemsContainer extends React.Component{
             editForm =  <EditItemForm key={this.state.updateGear._id} 
                                 modalIsOpen={this.state.modalIsOpen} 
                                 closeModal={this.closeModal} 
-                                item={this.state.updateGear}/>
+                                item={this.state.updateGear}
+                                getGear={this.getGear}/>
         }
 
 
         return(
             <>
                 <AddItemForm getGear={this.getGear} />
-                {displayItems}
-                {editForm}
+                <div className="items-container">
+
+                        {displayItems}
+                        {editForm}  
+
+               </div>
             </>
         );
     };

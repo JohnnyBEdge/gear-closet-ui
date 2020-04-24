@@ -4,7 +4,7 @@ import React from 'react';
 const Item = ({item, removeGear, updateGear}) => {
 
     return(
-        <div>
+        <div className="item-container">
 
                 <h3>{item.name}</h3>
                 <p>{item.desc}</p>

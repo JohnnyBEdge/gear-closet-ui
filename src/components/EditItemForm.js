@@ -32,17 +32,19 @@ class EditItemForm extends React.Component{
                 'content-type': 'application/json'
             },
             body: JSON.stringify(this.state)
-        }).then(this.props.getGear)
-            .then(() => this.setState({
-                name: '',
-                brand: '',
-                desc: '',
-                purchase_date: '',
-                price: 0,
-                use_category: [],
-                use_seasons: [],
-                notes: ''
-            }));
+        })
+        .then(() => this.setState({
+            name: '',
+            brand: '',
+            desc: '',
+            purchase_date: '',
+            price: 0,
+            use_category: [],
+            use_seasons: [],
+            notes: ''
+        })).then(this.props.getGear)
+        
+        this.props.closeModal();
     }
 
     render(){
