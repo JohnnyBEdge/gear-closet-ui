@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const Item = ({item, removeGear, updateGear}) => {
-
+    
     return(
         <div className="item-container">
 

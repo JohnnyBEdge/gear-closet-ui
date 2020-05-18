@@ -1,6 +1,6 @@
 import React from 'react';
-import PlusSign from "./imgs/plus.png"
-import Collapsible from 'react-collapsible';
+import PlusSign from "../imgs/plus.png"
+
 
 class AddItemForm extends React.Component{
 

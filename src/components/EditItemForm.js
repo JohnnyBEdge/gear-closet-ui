@@ -6,7 +6,7 @@ Modal.setAppElement('#root');
 
 class EditItemForm extends React.Component{
     constructor(props){
-        console.log("constructor", props.item)
+
         super(props);
         this.state = {
             name: this.props.item.name,
